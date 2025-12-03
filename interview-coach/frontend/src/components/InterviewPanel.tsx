@@ -36,7 +36,7 @@ interface InterviewPanelProps {
 
 export function InterviewPanel({
   messages,
-  currentQuestion,
+  currentQuestion: _currentQuestion,
   status,
   error,
   lastEvaluation,
