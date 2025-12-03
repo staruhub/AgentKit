@@ -15,7 +15,6 @@ import {
   Brain,
   Wrench,
   CheckCircle,
-  AlertCircle,
   Activity,
 } from 'lucide-react';
 import {
@@ -37,23 +36,6 @@ export function ObservationPanel({
   sessionId,
 }: ObservationPanelProps) {
   const metrics = useMemo(() => calculateTotalMetrics(events), [events]);
-
-  const getEventIcon = (eventType: string) => {
-    switch (eventType) {
-      case 'agent_start':
-        return <Zap className="w-3 h-3" />;
-      case 'agent_thinking':
-        return <Brain className="w-3 h-3" />;
-      case 'agent_complete':
-        return <CheckCircle className="w-3 h-3" />;
-      case 'tool_call':
-        return <Wrench className="w-3 h-3" />;
-      case 'handoff':
-        return <ArrowRight className="w-3 h-3" />;
-      default:
-        return <Activity className="w-3 h-3" />;
-    }
-  };
 
   const formatTimestamp = (timestamp: number) => {
     return new Date(timestamp * 1000).toLocaleTimeString();

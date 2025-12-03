@@ -22,7 +22,13 @@ from .models import (
     InterviewCompleteResponse,
 )
 from .websocket import manager, TraceEvent
-from ..tools.questions import get_demo_questions, get_interview_question
+import sys
+import os
+
+# Add parent directory to path for imports when running as script
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from tools.questions import get_demo_questions, get_interview_question
 
 router = APIRouter(prefix="/api/interview", tags=["interview"])
 

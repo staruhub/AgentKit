@@ -7,14 +7,14 @@
 import { useState, useCallback } from 'react';
 import { InterviewPanel } from './components/InterviewPanel';
 import { ObservationPanel } from './components/ObservationPanel';
-import { useWebSocket, TraceEvent } from './hooks/useWebSocket';
+import { useWebSocket } from './hooks/useWebSocket';
 import {
   startInterview,
   submitAnswer,
   StartInterviewResponse,
   SubmitAnswerResponse,
 } from './utils/api';
-import { Mic, Eye, Sparkles } from 'lucide-react';
+import { Mic, Sparkles } from 'lucide-react';
 
 type InterviewStatus = 'idle' | 'starting' | 'in_progress' | 'evaluating' | 'completed';
 
@@ -44,7 +44,7 @@ function App() {
     setMessages((prev) => [
       ...prev,
       {
-        id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+        id: `${Date.now()}-${Math.random().toString(36).substring(2, 11)}`,
         role,
         content,
         timestamp: Date.now(),

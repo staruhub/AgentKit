@@ -192,8 +192,16 @@ def create_scoring_tools():
 
     Returns a list of tool definitions that can be registered
     with create_sdk_mcp_server().
+
+    Note: Requires claude-agent-sdk to be installed.
     """
-    from claude_agent_sdk import tool
+    try:
+        from claude_agent_sdk import tool
+    except ImportError:
+        raise ImportError(
+            "claude-agent-sdk is required for MCP tools. "
+            "Install it with: pip install claude-agent-sdk"
+        )
 
     @tool(
         "evaluate_interview_answer",

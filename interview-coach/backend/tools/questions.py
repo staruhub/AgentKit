@@ -218,8 +218,16 @@ def get_demo_questions() -> list[InterviewQuestion]:
 def create_question_tools():
     """
     Create MCP tool definitions for the question system.
+
+    Note: Requires claude-agent-sdk to be installed.
     """
-    from claude_agent_sdk import tool
+    try:
+        from claude_agent_sdk import tool
+    except ImportError:
+        raise ImportError(
+            "claude-agent-sdk is required for MCP tools. "
+            "Install it with: pip install claude-agent-sdk"
+        )
 
     @tool(
         "get_next_question",
